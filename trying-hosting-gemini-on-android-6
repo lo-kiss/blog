@@ -1,0 +1,82 @@
+
+  .    _     *       \|/   .       .      -*-              +
+    .' \\`.     +    -*-     *   .         '       .   *
+ .  |__''_|  .       /|\ +         .    +       .           |
+    |     | .                                        .     -*-
+    |     |           `  .    '             . *   .    +    '
+  _.'-----'-._     *                  .
+/          apc\__.__.--._______________
+
+Trying to host on gemini using an Android 6.
+Published on 6 September 2023
+
+It all started with a poor Loki wanting to host a blog, but he was tired of
+the practices of the web, and so he thought he'd look for something a bit more
+different:
+
+Gemini.
+ ▄▀  ██▀ █▄ ▄█ █ █▄ █ █
+ ▀▄█ █▄▄ █ ▀ █ █ █ ▀█ █
+
+I'm a huge sucker for alternatives and "weird" software that tries to look at
+things differently and is not afraid of it. Gemini is essentially a smaller web 
+protocol, but without the shitty web practices. No HTML, CSS or Javascript to 
+annoy the shit out of you with ads, weird layouts and forced behavior with 
+Javascript. You have control over there, no unsolicited requests unless the 
+user explicitly says so. It's just heaven for a minimalist like me.
+
+Well, this is all super cool and all, but... how do I publish? Fact is that I 
+never hosted anything in my life and on top of that I really don't have the 
+best financial situation to allow me to buy dedicated hosting devices. I know 
+they're not that costly, especially for something small like gemini, but I'm 
+trying to save for a decent computer. I could use a platform that hosts the 
+content for me, but that's one of the reasons I don't want to use github for my
+blog. I want to feel like it's mine and I have absolute control over it. 
+
+So, I have one other option and that's to use spare devices around the house.
+There's an ASUS Android device that wants to act like a camera? I think its main
+intention is to be a camera with the phone functionality attached to it, but 
+it's just weird all around. It has decent specs that honestly surprised me: 
+4 GB RAM, 128 GB storage. This beats my phone on storage. 
+Only, there's one problem: Android 6 plus all the shit ASUS might have 
+changed or added.
+
+I probably can't root it, because the developer options are there, but there's
+no OEM unlocking option. Now, that's fine (I think), this device is for
+one purpose only and that's to host a gemini capsule. It would be awesome if 
+it was that easy. Here are the struggles I faced until now:
+
+- Termux uses a different repository for Android 6 and lower packages. There are
+absolutely no packages related to gemini on there;
+
+- Ok, how about compiling a gemini server from source? Sounds fine, let's try
+to compile agate, a gemini server in rust. First problem: it complained about
+the cargo edition being unknown so apparently it's because it's outdated.
+I tried updating using the command from the rust lang website and here comes the
+second problem: did I mention that this device is i686? Apparently, you can't 
+compile *on* i648, but you can compile *for* i686 with the rust compiler. (I'm 
+not a rust dev so I apologize if I got it wrong);
+
+- Alright, let's look for another server written in C this time, gmid. All was fine,
+I looked at dependencies and most of them were in the termux repo. Keyword: most.
+There was libtls that was not available and that makes it not compile :(.
+
+...And that's where I left things at. I was super tired by the end of the day
+and I decided to take a break from this for a while. Maybe I will come up with
+a solution until then. It would be a shame if I couldn't use this device for 
+anything else because it's got quite the specs, but yeah "smart"phones and their
+manufacturers.
+
+Until then, I'm hosting this plain text blog on github as I don't feel like
+using web tech anymore.
+
+Here are the links if you wanna take a look at the mentioned software:
+- Gemini: https://gemini.circumlunar.space/
+- Agate: https://github.com/mbrubeck/agate
+- gmid: https://github.com/omar-polo/gmid
+
+end.
+
+-
+This article is dedicated to the Public Domain using CC0.
+https://creativecommons.org/publicdomain/zero/1.0/
